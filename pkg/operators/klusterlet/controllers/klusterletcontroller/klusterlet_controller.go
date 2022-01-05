@@ -187,7 +187,7 @@ func (n *klusterletController) sync(ctx context.Context, controllerContext facto
 	// Sync pull secret to each namespace
 	namespaces := []string{config.KlusterletNamespace, fmt.Sprintf("%s-addon", config.KlusterletNamespace)}
 	for _, namespace := range namespaces {
-		err := n.ensureNamespace(ctx, klusterlet.Name, namespace)
+		err = n.ensureNamespace(ctx, klusterlet.Name, namespace)
 		if err != nil {
 			return err
 		}
@@ -204,7 +204,7 @@ func (n *klusterletController) sync(ctx context.Context, controllerContext facto
 		)
 
 		if err != nil {
-			return err
+			break
 		}
 	}
 
